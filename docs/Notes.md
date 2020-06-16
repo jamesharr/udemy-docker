@@ -42,6 +42,10 @@ CMD ["foo-server"]
 ```
 
 # Docker Compose
+* `docker-compose up`
+* `docker-compose up --build`
+* `docker-compose down`
+* `docker-compose ps` - Looks for docker containers (pwd matters)
 ```yaml
 # docker-compose.yml
 version: '3'
@@ -52,7 +56,11 @@ services:
         build: .
         ports:
             - "4001:8081"
+        restart: "always"
 ```
 
-* `docker-compose up`
-* `docker-compose up --build`
+`restart` options:
+* `"no"` - never
+* `"always"` - always restart, start on boot
+* `"on-failure"` - on non-zero code
+* `"unless-stopped"` - always restart, don't start on boot
